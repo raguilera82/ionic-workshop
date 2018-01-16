@@ -1,3 +1,4 @@
+import { Pro } from '@ionic/pro';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -17,6 +18,9 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+    
+    Pro.getApp().monitoring.exception(new Error('Error dentro del componente principal'))
+    
     this.initializeApp();
 
     // used for an example of ngFor and navigation
