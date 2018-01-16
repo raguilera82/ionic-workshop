@@ -7,6 +7,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 
+declare var Appsee:any;
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -35,6 +37,10 @@ export class MyApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+      if (this.platform.is('cordova')) {
+        Appsee.start("afb691dba33649be97756acf81e06a7e");
+      }
+      
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
