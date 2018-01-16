@@ -86,4 +86,6 @@
         <variable name="CHANNEL_NAME" value="Production" />
         <variable name="UPDATE_METHOD" value="background" />
     </plugin>
+    <plugin name="cordova-plugin-flurryanalytics" spec="^1.4.6" />
+    <plugin name="cordova-plugin-appsee" spec="^2.3.65" />
 </widget>

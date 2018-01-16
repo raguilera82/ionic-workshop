@@ -11,6 +11,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { Pro } from '@ionic/pro';
 
+import { FlurryAnalytics, FlurryAnalyticsObject, FlurryAnalyticsOptions } from '@ionic-native/flurry-analytics';
+
 const IonicPro = Pro.init('9be60216', {
   appVersion: "0.0.1"
 });
@@ -44,6 +46,7 @@ export class MyErrorHandler implements ErrorHandler {
   ],
   imports: [
     BrowserModule,
+    FlurryAnalytics,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
