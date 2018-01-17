@@ -1,3 +1,4 @@
+import { ListPage } from './../list/list';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
@@ -31,6 +32,7 @@ export class StoragePage {
         this.showSpinner = false;
       }
     )
+    this.navCtrl.push(ListPage, {data: 'data'});
   }
 
   getData() {

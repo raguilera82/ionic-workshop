@@ -1,6 +1,9 @@
-S<ion-header>
+<ion-header>
 
   <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
     <ion-title>storage</ion-title>
   </ion-navbar>
 
@@ -11,8 +14,8 @@ S<ion-header>
 
   <ion-spinner *ngIf="showSpinner"></ion-spinner>
 
-    <button ion-button (click)="setData()">Set Data</button>
+  <button ion-button (click)="setData()">Set Data</button>
 
-    <button ion-button (click)="getData()">Get Data</button>
+  <button ion-button (click)="getData()">Get Data</button>
 
 </ion-content>

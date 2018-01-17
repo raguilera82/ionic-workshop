@@ -1,3 +1,4 @@
+import { EnvPageModule } from './../pages/env/env.module';
 import { StoragePage } from './../pages/storage/storage';
 import { IonicStorageModule } from '@ionic/storage';
 import { BrowserModule } from '@angular/platform-browser';
@@ -47,6 +48,7 @@ export class MyErrorHandler implements ErrorHandler {
   ],
   imports: [
     BrowserModule,
+    EnvPageModule,
     IonicStorageModule.forRoot({
       name: '__mydb',
          driverOrder: ['sqlite', 'indexeddb', 'websql']

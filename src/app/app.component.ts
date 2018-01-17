@@ -1,3 +1,4 @@
+import { EnvPage } from './../pages/env/env';
 import { StoragePage } from './../pages/storage/storage';
 import { Pro } from '@ionic/pro';
 import { Component, ViewChild } from '@angular/core';
@@ -28,7 +29,8 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
-      { title: 'Storage', component: StoragePage }
+      { title: 'Storage', component: StoragePage },
+      { title: 'Environment', component: EnvPage },
     ];
 
   }
