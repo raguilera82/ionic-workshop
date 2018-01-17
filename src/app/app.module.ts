@@ -1,3 +1,4 @@
+import { LoginPageModule } from './../pages/login/login.module';
 import { ModalPage } from './../pages/modal/modal';
 import { EnvPageModule } from './../pages/env/env.module';
 import { StoragePage } from './../pages/storage/storage';
@@ -15,6 +16,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { Pro } from '@ionic/pro';
 import { IconsProvider } from '../providers/icons/icons';
+import { AuthProvider } from '../providers/auth/auth';
 
 const IonicPro = Pro.init('9be60216', {
   appVersion: "0.0.1"
@@ -52,6 +54,7 @@ export class MyErrorHandler implements ErrorHandler {
   imports: [
     BrowserModule,
     EnvPageModule,
+    LoginPageModule,
     IonicStorageModule.forRoot({
       name: '__mydb',
          driverOrder: ['sqlite', 'indexeddb', 'websql']
@@ -71,7 +74,8 @@ export class MyErrorHandler implements ErrorHandler {
     SplashScreen,
     IonicErrorHandler,
     {provide: ErrorHandler, useClass: MyErrorHandler},
-    IconsProvider
+    IconsProvider,
+    AuthProvider
   ]
 })
 export class AppModule {}
