@@ -1,3 +1,5 @@
+import { StoragePage } from './../pages/storage/storage';
+import { IonicStorageModule } from '@ionic/storage';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule, Injectable, Injector } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -40,17 +42,23 @@ export class MyErrorHandler implements ErrorHandler {
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    StoragePage
   ],
   imports: [
     BrowserModule,
+    IonicStorageModule.forRoot({
+      name: '__mydb',
+         driverOrder: ['sqlite', 'indexeddb', 'websql']
+    }),
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    StoragePage
   ],
   providers: [
     StatusBar,
