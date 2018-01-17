@@ -1,3 +1,5 @@
+import { AuthProvider } from './../providers/auth/auth';
+import { LoginPage } from './../pages/login/login';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { EnvPage } from './../pages/env/env';
 import { StoragePage } from './../pages/storage/storage';
@@ -27,7 +29,8 @@ export class MyApp {
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
     public events: Events,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController,
+    public authProvider: AuthProvider) {
     
     this.initializeApp();
 
@@ -67,6 +70,17 @@ export class MyApp {
 
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      this.authProvider.getLoginIn().subscribe(
+        (result) => {
+          if (result) {
+            this.rootPage = HomePage;
+          }else {
+            this.rootPage = LoginPage;
+          }
+        } 
+      )
+
     });
   }
 
