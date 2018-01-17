@@ -14,6 +14,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { Pro } from '@ionic/pro';
+import { IconsProvider } from '../providers/icons/icons';
 
 const IonicPro = Pro.init('9be60216', {
   appVersion: "0.0.1"
@@ -69,7 +70,8 @@ export class MyErrorHandler implements ErrorHandler {
     StatusBar,
     SplashScreen,
     IonicErrorHandler,
-    {provide: ErrorHandler, useClass: MyErrorHandler}
+    {provide: ErrorHandler, useClass: MyErrorHandler},
+    IconsProvider
   ]
 })
 export class AppModule {}
