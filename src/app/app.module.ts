@@ -1,3 +1,4 @@
+import { PipesModule } from './../pipes/pipes.module';
 import { LoginPageModule } from './../pages/login/login.module';
 import { ModalPage } from './../pages/modal/modal';
 import { EnvPageModule } from './../pages/env/env.module';
@@ -55,6 +56,7 @@ export class MyErrorHandler implements ErrorHandler {
     BrowserModule,
     EnvPageModule,
     LoginPageModule,
+    PipesModule,
     IonicStorageModule.forRoot({
       name: '__mydb',
          driverOrder: ['sqlite', 'indexeddb', 'websql']
