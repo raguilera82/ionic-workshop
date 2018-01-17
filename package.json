@@ -13,7 +13,6 @@
         "build:qa": "PHASE=qa ionic-app-scripts build",
         "serve:qa": "PHASE=qa ionic-app-scripts serve",
         "lint": "ionic-app-scripts lint"
-        
     },
     "config": {
         "ionic_webpack": "./config/webpack.config.js"

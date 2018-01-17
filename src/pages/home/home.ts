@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, Events } from 'ionic-angular';
-import { AlertController } from 'ionic-angular/components/alert/alert-controller';
+import { NavController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
