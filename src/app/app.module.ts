@@ -1,3 +1,4 @@
+import { ModalPage } from './../pages/modal/modal';
 import { EnvPageModule } from './../pages/env/env.module';
 import { StoragePage } from './../pages/storage/storage';
 import { IonicStorageModule } from '@ionic/storage';
@@ -44,7 +45,8 @@ export class MyErrorHandler implements ErrorHandler {
     MyApp,
     HomePage,
     ListPage,
-    StoragePage
+    StoragePage,
+    ModalPage
   ],
   imports: [
     BrowserModule,
@@ -60,7 +62,8 @@ export class MyErrorHandler implements ErrorHandler {
     MyApp,
     HomePage,
     ListPage,
-    StoragePage
+    StoragePage,
+    ModalPage
   ],
   providers: [
     StatusBar,
