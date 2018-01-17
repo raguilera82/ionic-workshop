@@ -8,6 +8,8 @@ import { Storage } from '@ionic/storage';
 })
 export class StoragePage {
 
+  showSpinner: boolean;
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -16,14 +18,17 @@ export class StoragePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StoragePage');
+    this.showSpinner = false;
   }
 
   setData() {
     console.log('Establezco el data');
     console.log(this.storage.driver);
+    this.showSpinner = true;
     this.storage.set('user', {name: 'Ruben4'}).then(
       (result) => {
         console.log(result);
+        this.showSpinner = false;
       }
     )
   }

@@ -9,6 +9,8 @@ S<ion-header>
 
 <ion-content padding>
 
+  <ion-spinner *ngIf="showSpinner"></ion-spinner>
+
     <button ion-button (click)="setData()">Set Data</button>
 
     <button ion-button (click)="getData()">Get Data</button>
