@@ -1,3 +1,4 @@
+import { StoragePage } from './../pages/storage/storage';
 import { Pro } from '@ionic/pro';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
@@ -21,14 +22,13 @@ export class MyApp {
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     
-    Pro.getApp().monitoring.exception(new Error('Error dentro del componente principal'))
-    
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'List', component: ListPage },
+      { title: 'Storage', component: StoragePage }
     ];
 
   }
@@ -38,7 +38,15 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       if (this.platform.is('cordova')) {
-        Appsee.start("afb691dba33649be97756acf81e06a7e");
+        Appsee.start("afb691dba33649be97756acf81e06a7e",
+        () => {
+          Pro.getApp().monitoring.log('Arranque correcto AppSee');
+          console.log('Arranque correcto AppSee');
+        },
+        () => {
+          Pro.getApp().monitoring.exception(new Error('Error en el arranque'));
+          console.log('Error arranque AppSee');
+        });
       }
       
       this.statusBar.styleDefault();
