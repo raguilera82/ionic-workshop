@@ -27,4 +27,12 @@ export class EnvPage {
     console.log(ENV);
   }
 
+  ionViewCanEnter(): boolean {
+    return true;
+  }
+
+  ionViewCanLeave(): boolean {
+    return true;
+  }
+
 }
