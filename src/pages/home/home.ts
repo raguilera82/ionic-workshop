@@ -1,7 +1,6 @@
-import { ENV } from '@app/env';
-
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Events } from 'ionic-angular';
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
 @Component({
   selector: 'page-home',
@@ -9,7 +8,10 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  user: any;
+
+  constructor(
+    public navCtrl: NavController) {
   }
 
 }

@@ -1,7 +1,9 @@
+import { ModalPage } from './../modal/modal';
 import { ListPage } from './../list/list';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { Events } from 'ionic-angular';
 
 @Component({
   selector: 'page-storage',
@@ -14,7 +16,9 @@ export class StoragePage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public storage: Storage) {
+    public storage: Storage,
+    public events: Events,
+    public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
@@ -26,12 +30,16 @@ export class StoragePage {
     console.log('Establezco el data');
     console.log(this.storage.driver);
     this.showSpinner = true;
-    this.storage.set('user', {name: 'Ruben4'}).then(
+    const user = {name: 'Ruben4'};
+    this.storage.set('user', user).then(
       (result) => {
         console.log(result);
+        this.events.publish('user:set', user);
+        console.log('Publico el usuario');
         this.showSpinner = false;
       }
-    )
+      
+    );
     this.navCtrl.push(ListPage, {data: 'data'});
   }
 
@@ -40,6 +48,7 @@ export class StoragePage {
     this.storage.get('user').then(
       (result) => {
         console.log(result.name);
+        this.modalCtrl.create(ModalPage, {data: 'modal'}).present();
       } 
     );
   }
