@@ -1,3 +1,8 @@
+import { StartPageModule } from './../pages/start/start.module';
+import { StartPage } from './../pages/start/start';
+import { MoonPageModule } from './../pages/moon/moon.module';
+import { SunPageModule } from './../pages/sun/sun.module';
+import { StarPageModule } from './../pages/star/star.module';
 import { PipesModule } from './../pipes/pipes.module';
 import { LoginPageModule } from './../pages/login/login.module';
 import { ModalPage } from './../pages/modal/modal';
@@ -57,6 +62,10 @@ export class MyErrorHandler implements ErrorHandler {
     EnvPageModule,
     LoginPageModule,
     PipesModule,
+    StartPageModule,
+    SunPageModule,
+    MoonPageModule,
+    StarPageModule,
     IonicStorageModule.forRoot({
       name: '__mydb',
          driverOrder: ['sqlite', 'indexeddb', 'websql']

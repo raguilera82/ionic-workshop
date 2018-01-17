@@ -1,3 +1,4 @@
+import { StartPage } from './../pages/start/start';
 import { AuthProvider } from './../providers/auth/auth';
 import { LoginPage } from './../pages/login/login';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
@@ -20,7 +21,7 @@ declare var Appsee:any;
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any;
 
   pages: Array<{title: string, component: any}>;
 
@@ -73,8 +74,8 @@ export class MyApp {
 
       this.authProvider.getLoginIn().subscribe(
         (result) => {
-          if (result) {
-            this.rootPage = HomePage;
+          if (!result) {
+            this.rootPage = StartPage;
           }else {
             this.rootPage = LoginPage;
           }
