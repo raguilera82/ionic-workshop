@@ -1,18 +1,20 @@
-import { TimeoutInterceptor } from './../interceptors/timeout.interceptor';
-import { ErrorInterceptor } from './../interceptors/error.interceptor';
-import { UsersPageModule } from './../pages/users/users.module';
+import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorHandler, Injectable, Injector, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Pro } from '@ionic/pro';
 import { IonicStorageModule } from '@ionic/storage';
-import { IonicApp, IonicErrorHandler, IonicModule, Events } from 'ionic-angular';
+import { Events, IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { ApiProvider } from '../providers/api/api';
 import { AuthProvider } from '../providers/auth/auth';
 import { IconsProvider } from '../providers/icons/icons';
+import { ErrorInterceptor } from './../interceptors/error.interceptor';
+import { TimeoutInterceptor } from './../interceptors/timeout.interceptor';
 import { EnvPageModule } from './../pages/env/env.module';
 import { LoginPageModule } from './../pages/login/login.module';
 import { ModalPage } from './../pages/modal/modal';
@@ -21,11 +23,9 @@ import { StarPageModule } from './../pages/star/star.module';
 import { StartPageModule } from './../pages/start/start.module';
 import { StoragePage } from './../pages/storage/storage';
 import { SunPageModule } from './../pages/sun/sun.module';
+import { UsersPageModule } from './../pages/users/users.module';
 import { PipesModule } from './../pipes/pipes.module';
 import { MyApp } from './app.component';
-import { ApiProvider } from '../providers/api/api';
-import { HttpClientModule } from '@angular/common/http';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 const IonicPro = Pro.init('9be60216', {
   appVersion: "0.0.1"
