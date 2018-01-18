@@ -1,3 +1,4 @@
+import { UsersPage } from './../pages/users/users';
 import { StartPage } from './../pages/start/start';
 import { AuthProvider } from './../providers/auth/auth';
 import { LoginPage } from './../pages/login/login';
@@ -41,6 +42,7 @@ export class MyApp {
       { title: 'List', component: ListPage },
       { title: 'Storage', component: StoragePage },
       { title: 'Environment', component: EnvPage },
+      { title: 'Users', component: UsersPage }
     ];
 
   }
@@ -65,6 +67,14 @@ export class MyApp {
         this.alertCtrl.create({
           title: 'Usuario creado',
           subTitle: 'Creado correctamente',
+          buttons: ['Ok']
+        }).present();
+      })
+
+      this.events.subscribe('show:error', (error) => {
+        this.alertCtrl.create({
+          title: 'Error',
+          subTitle: error.dataerror,
           buttons: ['Ok']
         }).present();
       })

@@ -1,28 +1,31 @@
-import { StartPageModule } from './../pages/start/start.module';
-import { StartPage } from './../pages/start/start';
-import { MoonPageModule } from './../pages/moon/moon.module';
-import { SunPageModule } from './../pages/sun/sun.module';
-import { StarPageModule } from './../pages/star/star.module';
-import { PipesModule } from './../pipes/pipes.module';
-import { LoginPageModule } from './../pages/login/login.module';
-import { ModalPage } from './../pages/modal/modal';
-import { EnvPageModule } from './../pages/env/env.module';
-import { StoragePage } from './../pages/storage/storage';
-import { IonicStorageModule } from '@ionic/storage';
+import { TimeoutInterceptor } from './../interceptors/timeout.interceptor';
+import { ErrorInterceptor } from './../interceptors/error.interceptor';
+import { UsersPageModule } from './../pages/users/users.module';
+import { ErrorHandler, Injectable, Injector, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule, Injectable, Injector } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
+import { Pro } from '@ionic/pro';
+import { IonicStorageModule } from '@ionic/storage';
+import { IonicApp, IonicErrorHandler, IonicModule, Events } from 'ionic-angular';
 
-import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-
-import { Pro } from '@ionic/pro';
-import { IconsProvider } from '../providers/icons/icons';
 import { AuthProvider } from '../providers/auth/auth';
+import { IconsProvider } from '../providers/icons/icons';
+import { EnvPageModule } from './../pages/env/env.module';
+import { LoginPageModule } from './../pages/login/login.module';
+import { ModalPage } from './../pages/modal/modal';
+import { MoonPageModule } from './../pages/moon/moon.module';
+import { StarPageModule } from './../pages/star/star.module';
+import { StartPageModule } from './../pages/start/start.module';
+import { StoragePage } from './../pages/storage/storage';
+import { SunPageModule } from './../pages/sun/sun.module';
+import { PipesModule } from './../pipes/pipes.module';
+import { MyApp } from './app.component';
+import { ApiProvider } from '../providers/api/api';
+import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 const IonicPro = Pro.init('9be60216', {
   appVersion: "0.0.1"
@@ -32,7 +35,7 @@ const IonicPro = Pro.init('9be60216', {
 export class MyErrorHandler implements ErrorHandler {
   ionicErrorHandler: IonicErrorHandler;
 
-  constructor(injector: Injector) {
+  constructor(injector: Injector, public events: Events) {
     try {
       this.ionicErrorHandler = injector.get(IonicErrorHandler);
     } catch(e) {
@@ -46,6 +49,8 @@ export class MyErrorHandler implements ErrorHandler {
     // Remove this if you want to disable Ionic's auto exception handling
     // in development mode.
     this.ionicErrorHandler && this.ionicErrorHandler.handleError(err);
+
+    this.events.publish('show:error', {dataerror: err});
   }
 }
 
@@ -59,6 +64,7 @@ export class MyErrorHandler implements ErrorHandler {
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     EnvPageModule,
     LoginPageModule,
     PipesModule,
@@ -66,6 +72,7 @@ export class MyErrorHandler implements ErrorHandler {
     SunPageModule,
     MoonPageModule,
     StarPageModule,
+    UsersPageModule,
     IonicStorageModule.forRoot({
       name: '__mydb',
          driverOrder: ['sqlite', 'indexeddb', 'websql']
@@ -86,7 +93,10 @@ export class MyErrorHandler implements ErrorHandler {
     IonicErrorHandler,
     {provide: ErrorHandler, useClass: MyErrorHandler},
     IconsProvider,
-    AuthProvider
+    AuthProvider,
+    ApiProvider,
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: TimeoutInterceptor, multi: true}
   ]
 })
 export class AppModule {}
