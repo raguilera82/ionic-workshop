@@ -7,12 +7,14 @@
     "scripts": {
         "clean": "ionic-app-scripts clean",
         "build": "PHASE=dev ionic-app-scripts build",
-        "serve": "PHASE=dev ionic-app-scripts serve",
+        "serve": "PHASE=dev ionic-app-scripts serve -l",
         "build:prod": "PHASE=prod ionic-app-scripts build --prod",
         "serve:prod": "PHASE=prod ionic-app-scripts serve --prod",
         "build:qa": "PHASE=qa ionic-app-scripts build",
         "serve:qa": "PHASE=qa ionic-app-scripts serve",
-        "lint": "ionic-app-scripts lint"
+        "lint": "ionic-app-scripts lint",
+        "add:android": "ionic cordova platform add android",
+        "run:android": "PHASE=prod ionic cordova run android"
     },
     "config": {
         "ionic_webpack": "./config/webpack.config.js"
