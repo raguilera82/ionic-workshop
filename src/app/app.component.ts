@@ -114,4 +114,8 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 38ec9ff34bd4e5cc4b402f576ec510115facfb63
