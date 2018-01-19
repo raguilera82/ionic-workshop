@@ -1,3 +1,4 @@
+import { ThemeStateProvider } from './../providers/theme-state/theme-state';
 import { UsersPage } from './../pages/users/users';
 import { StartPage } from './../pages/start/start';
 import { AuthProvider } from './../providers/auth/auth';
@@ -22,6 +23,8 @@ declare var Appsee:any;
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
+  selectedTheme: string;
+
   rootPage: any;
 
   pages: Array<{title: string, component: any}>;
@@ -32,7 +35,8 @@ export class MyApp {
     public splashScreen: SplashScreen,
     public events: Events,
     public alertCtrl: AlertController,
-    public authProvider: AuthProvider) {
+    public authProvider: AuthProvider,
+    public themeStateProvider: ThemeStateProvider) {
     
     this.initializeApp();
 
@@ -62,6 +66,10 @@ export class MyApp {
           console.log('Error arranque AppSee');
         });
       }
+
+      this.themeStateProvider.getActiveTheme().subscribe(
+        activeTheme => this.selectedTheme = activeTheme
+      )
 
       this.events.subscribe('user:set', (user) => {
         this.alertCtrl.create({

@@ -10,6 +10,10 @@
 
 <ion-content padding>
 
+  <button ion-button round (click)="toggleAppTheme()">
+    <ion-icon name="bulb"></ion-icon> Toggle Theme
+  </button>
+
   <my-template urlpath="assets/prueba.html"></my-template>
 
   <iframe style="width: 100%; height: 100%; overflow-y: auto; overflow-x: none;" src="http://127.0.0.1:8080/prueba.html"></iframe>
