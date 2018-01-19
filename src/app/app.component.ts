@@ -1,21 +1,20 @@
-import { ThemeStateProvider } from './../providers/theme-state/theme-state';
-import { UsersPage } from './../pages/users/users';
-import { StartPage } from './../pages/start/start';
-import { AuthProvider } from './../providers/auth/auth';
-import { LoginPage } from './../pages/login/login';
-import { AlertController } from 'ionic-angular/components/alert/alert-controller';
-import { EnvPage } from './../pages/env/env';
-import { StoragePage } from './../pages/storage/storage';
-import { Pro } from '@ionic/pro';
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, Events } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
+import { Events, Nav, Platform } from 'ionic-angular';
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { EnvPage } from './../pages/env/env';
+import { LoginPage } from './../pages/login/login';
+import { StartPage } from './../pages/start/start';
+import { StoragePage } from './../pages/storage/storage';
+import { UsersPage } from './../pages/users/users';
+import { AuthProvider } from './../providers/auth/auth';
+import { ThemeStateProvider } from './../providers/theme-state/theme-state';
 
-declare var Appsee:any;
+//declare var Appsee:any;
 
 @Component({
   templateUrl: 'app.html'
@@ -113,8 +112,4 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 38ec9ff34bd4e5cc4b402f576ec510115facfb63
