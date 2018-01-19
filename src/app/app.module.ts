@@ -26,6 +26,7 @@ import { SunPageModule } from './../pages/sun/sun.module';
 import { UsersPageModule } from './../pages/users/users.module';
 import { PipesModule } from './../pipes/pipes.module';
 import { MyApp } from './app.component';
+import { ThemeStateProvider } from '../providers/theme-state/theme-state';
 
 const IonicPro = Pro.init('9be60216', {
   appVersion: "0.0.1"
@@ -96,7 +97,8 @@ export class MyErrorHandler implements ErrorHandler {
     AuthProvider,
     ApiProvider,
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: TimeoutInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: TimeoutInterceptor, multi: true},
+    ThemeStateProvider
   ]
 })
 export class AppModule {}
