@@ -1,0 +1,8 @@
+{
+  "dev": {
+    "config-file": "https://6dfde99e.ngrok.io/chcp.json"
+  },
+  "production": {
+    "config-file": "https://ionic-workshop-b1b19.firebaseapp.com/chcp.json"
+  }
+}
