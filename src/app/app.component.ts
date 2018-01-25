@@ -14,6 +14,8 @@ import { UsersPage } from './../pages/users/users';
 import { AuthProvider } from './../providers/auth/auth';
 import { ThemeStateProvider } from './../providers/theme-state/theme-state';
 
+import { HockeyApp } from 'ionic-hockeyapp';
+
 //declare var Appsee:any;
 
 @Component({
@@ -35,7 +37,8 @@ export class MyApp {
     public events: Events,
     public alertCtrl: AlertController,
     public authProvider: AuthProvider,
-    public themeStateProvider: ThemeStateProvider) {
+    public themeStateProvider: ThemeStateProvider,
+    public hockeyapp: HockeyApp) {
     
     this.initializeApp();
 
@@ -64,6 +67,14 @@ export class MyApp {
           console.log('Error arranque AppSee');
         });
       }*/
+
+      const androidAppId = 'a5b4d6d1f533468bbf1632a8e9cf025c';
+      const iosAppId = '';
+      const autoSendCrashReports = true;
+      const ignoreCrashDialog = true;
+
+      this.hockeyapp.start(androidAppId, iosAppId, autoSendCrashReports, ignoreCrashDialog);
+
 
       this.themeStateProvider.getActiveTheme().subscribe(
         activeTheme => this.selectedTheme = activeTheme

@@ -28,6 +28,8 @@ import { PipesModule } from './../pipes/pipes.module';
 import { MyApp } from './app.component';
 import { ThemeStateProvider } from '../providers/theme-state/theme-state';
 
+import { HockeyApp } from 'ionic-hockeyapp';
+
 const IonicPro = Pro.init('9be60216', {
   appVersion: "0.0.1"
 });
@@ -96,6 +98,7 @@ export class MyErrorHandler implements ErrorHandler {
     IconsProvider,
     AuthProvider,
     ApiProvider,
+    HockeyApp,
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: TimeoutInterceptor, multi: true},
     ThemeStateProvider
