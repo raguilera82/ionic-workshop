@@ -15,22 +15,24 @@
 
 <ion-content padding>
 
-  <ion-list [virtualScroll]="users$ | async">
+  <ion-list [virtualScroll]="users">
     <ion-item *virtualItem="let user">
       <ion-thumbnail item-left>
         <img src="{{user.avatar_url}}">
       </ion-thumbnail>
-      <h2>{{user.login}}</h2>
+      <h2>{{user.name}}</h2>
+      <h3>{{user.login}}</h3>
     </ion-item>
   </ion-list>
 
 
   <ion-list>
-    <ion-item *ngFor="let user of (users$ | async)">
+    <ion-item *ngFor="let user of users">
       <ion-thumbnail item-left>
         <img src="{{user.avatar_url}}">
       </ion-thumbnail>
-      <h2>{{user.login}}</h2>
+      <h2>{{user.name}}</h2>
+      <h3>{{user.login}}</h3>
     </ion-item>
   </ion-list>
 

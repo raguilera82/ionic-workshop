@@ -17,7 +17,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class UsersPage {
 
-  users$: Observable<any>;
+  users: Array<any> = [];
 
   constructor(
     public navCtrl: NavController, 
@@ -27,7 +27,12 @@ export class UsersPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UsersPage');
-    this.users$ = this.api.getUsers();
+    this.api.getUsers().subscribe(
+      user => {
+        console.log(user);
+        this.users = [...this.users, user];
+      }
+    )
   }
 
 }
