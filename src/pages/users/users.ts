@@ -27,10 +27,10 @@ export class UsersPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UsersPage');
-    this.api.getUsers().subscribe(
-      user => {
-        console.log(user);
-        this.users = [...this.users, user];
+    this.api.getUsersWithMoreInfo().subscribe(
+      users => {
+        console.log(users);
+        this.users = users;
       }
     )
   }
